@@ -2,6 +2,9 @@ spring:
   application:
     name: his-service
 
+  config:
+    import: optional:nacos:his-service.yaml
+
   cloud:
     nacos:
       discovery:
@@ -9,8 +12,7 @@ spring:
       config:
         server-addr: 127.0.0.1:8848
         file-extension: yaml
-        import-check:
-          enabled: false
+        refresh-enabled: true
 
   datasource:
     url: jdbc:mysql://localhost:3306/his_db?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8
@@ -22,10 +24,6 @@ spring:
     redis:
       host: 127.0.0.1
       port: 6379
-
-  security:
-    basic:
-      enabled: false
 
 server:
   port: 8080
